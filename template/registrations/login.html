@@ -1,0 +1,31 @@
+{% extends 'registrations/base.html' %}
+{% load static %}
+
+{% block title  %}
+TravelDux | LoginPage
+{% endblock %}
+
+{% block content %}
+<div class="login_box">
+    <div class="row">
+        <img src="{% static 'images/logo.png' %}" alt="no picture" class="login_logo">
+    </div>
+    <div class="row">
+        <form action="">
+            <div class="row">
+                <label for="username" class="label">Username</label>
+                <input type="text" name="username" id="username" class="inp">
+            </div>
+            <div class="row">
+                <label for="password" class="label">Password</label>
+                <input type="password" name="password" id="password" class="inp">
+            </div>
+            <div class="row">
+                <button type="submit" class="btn btn-success submit_button">Submit</button>
+                <p>forgot <a href="">password?</a></p>
+            </div>
+        </form>
+    </div>
+    <div class="row"><p>Don't have an account? <a href="{% url 'signup' %}">SignUp!</a></p></div>
+</div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'registrations/base.html' %}
+{% load static %}
+
+{% block title %}
+    TravelDux | SignUpPage
+{% endblock %}
+
+{% block content %}
+<div class="login_box" style="margin-top: -90px;">
+    <div class="row">
+        <img src="{% static 'images/logo.png' %}" alt="no picture" class="login_logo">
+    </div>
+    <div class="row">
+        <form action="">
+            <div class="row col-md-12 d-flex">
+                <div class="col-md-6" style="margin-left: -14px;">
+                    <label for="fname" class="label">First Name</label>
+                    <input type="text" name="firstname" id="fname" class="inp" style="width: 142px;">
+                </div>
+                <div class="col-md-6">
+                    <label for="lname" class="label">Last Name</label>
+                    <input type="text" name="lastname" id="lname" class="inp" style="width: 142px;margin-left:14px;">
+                </div>
+            </div>
+            <div class="row">
+                <label for="username" class="label">Username</label>
+                <input type="text" name="username" id="username" class="inp">
+            </div>
+            <div class="row">
+                <label for="email" class="label">Email</label>
+                <input type="email" name="email" id="email" class="inp">
+            </div>
+            <div class="row">
+                <label for="password" class="label">Password</label>
+                <input type="password" name="password" id="password" class="inp">
+            </div>
+            <div class="row">
+                <label for="password" class="label">Re-Enter Password</label>
+                <input type="password" name="password" id="password" class="inp">
+            </div>
+            <div class="row">
+                <button type="submit" class="btn btn-success submit_button">Submit</button>
+            </div>
+        </form>
+    </div>
+    <div class="row mt-3" ><p>have an account? <a href="{% url 'login' %}">LogIn!</a></p></div>
+</div>
+{% endblock %}
