@@ -25,6 +25,7 @@ urlpatterns = [
     path('userviewSection/<int:id>/',views.UserViewSection,name='Userviewsection'),
     path('bookingDetails/',views.UserBookingDetails,name='bookingDetails'),
     path('searchHere/',views.searchHere,name='searchHere'),
+    path('checkoutPage/',views.checkoutPage,name='checkoutPage'),
     # Vendor Section
     path('vendorpage/',views.vendorIndexPage,name='vendorpage'),
     path('bookigVendor/',views.vendorBookingSection,name='vendorBooking'),

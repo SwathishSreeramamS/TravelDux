@@ -162,7 +162,7 @@
             {% for i in item %}
             <form action="{% url 'bookingDetails' %}" method="POST" class="inpForm">
                 {% csrf_token %}
-                <input type="text" name="destination" id="" placeholder="Destination" class="bookinp valued" value="{{i.destination}}" required required >
+                <input type="text" name="destination" id="" placeholder="Destination" class="bookinp valued" value="{{i.destination}}" required  >
                 <input type="text" name="packager_name" id="" placeholder="packager_name" class="bookinp valued" value="{{i.packager_name}}" required >
                 <input type="text" name="name" id="" placeholder="Enter Your Name" class="bookinp" required>
                 <input type="email" name="email" id="" placeholder="Enter Your Email" class="bookinp" required>

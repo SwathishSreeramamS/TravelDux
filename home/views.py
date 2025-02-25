@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate,login
 from django.views.decorators.cache import never_cache
 from . models import *
+
 # Create your views here.
 
 # Login,Logout,Signup Section
@@ -108,6 +109,9 @@ def destinationPage(request):
     return render(request,'userInterface/destination.html')
 
 def packagePage(request):
+    if 'ids' in request.session:
+        request.session.flush()
+
     verified = 'verified'
     items = packages.objects.filter(verification=verified)
     context = {
@@ -129,6 +133,7 @@ def fournotforPage(request):
 
 def UserViewSection(request,id):
     item = packages.objects.filter(id=id)
+    request.session['ids'] = id
     context = {
         'item':item
     }
@@ -144,6 +149,7 @@ def UserBookingDetails(request):
         destination = request.POST.get('destination')
         packager_name = request.POST.get('packager_name')
         
+        request.session['passengerName'] = name
         details = bookingDetails(
             name = name,
             email = email,
@@ -151,10 +157,10 @@ def UserBookingDetails(request):
             altPhone = altPhone,
             numTraveller = passenger,
             packager_name = packager_name,
-            destination = destination
+            destination = destination,
         )
         details.save()
-        return redirect(packagePage)
+        return redirect(checkoutPage)
     
 def searchHere(request):
     if request.method == 'POST':
@@ -165,6 +171,20 @@ def searchHere(request):
         }
         return render(request,'userInterface/package.html',context)
     
+
+def checkoutPage(request):
+    id = request.session.get('ids')
+    item = packages.objects.filter(id = id).first()
+    name = request.session.get('passengerName')
+    user = bookingDetails.objects.filter(name = name)
+    use = bookingDetails.objects.filter(name = name).first()
+    total = item.price*use.numTraveller
+    context = {
+        'user' : user,
+        'total' : total,
+    }    
+    return render(request,'userInterface/checkout.html',context)
+
 
 
 # Vendor Section
