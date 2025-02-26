@@ -293,3 +293,20 @@ def removeSection(request,id):
     item = packages.objects.filter(id=id)
     item.delete()
     return redirect(adminPenel)
+
+
+def AdminPanelUserSection(request):
+    is_staff = False
+    user = User.objects.filter(is_staff = is_staff)
+    context = {
+        'user':user,
+    }
+    return render(request,'adminSection/userSection.html',context)
+
+def AdminPanelVendorSection(request):
+    is_staff = True
+    user = User.objects.filter(is_staff = is_staff)
+    context = {
+        'user':user,
+    }
+    return render(request,'adminSection/vendorSection.html',context)

@@ -1,0 +1,22 @@
+{% extends 'adminSection/base.html' %}
+    {% block content %}
+        <table>
+            <tr>
+                <th>Username</th>
+                <th>FirstName</th> 
+                <th>LastName</th>
+                <th>Date of Join</th>
+                <th>Last Login</th>
+            </tr>
+            {% for i in user %}
+            <tr>
+                <td>{{i.username}}</td>
+                <td>{{i.first_name}}</td>
+                <td>{{i.last_name}}</td>
+                <td>{{i.date_joined}}</td>
+                <td>{{i.last_login}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% endblock %}
+    

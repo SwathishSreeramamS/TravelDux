@@ -35,6 +35,8 @@ urlpatterns = [
     path('verification/<int:id>/',views.verification,name='verification'),
     path('viewsection/<int:id>/',views.viewSection,name='viewsection'),
     path('removeItem/<int:id>/',views.removeSection,name='removeItem'),
+    path('AdminPanelUserSection/',views.AdminPanelUserSection,name='AdminPanelUserSection'),
+    path('AdminPanelVendorSection/',views.AdminPanelVendorSection,name='AdminPanelVendorSection'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
