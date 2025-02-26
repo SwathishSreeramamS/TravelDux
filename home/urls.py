@@ -29,7 +29,8 @@ urlpatterns = [
     # Vendor Section
     path('vendorpage/',views.vendorIndexPage,name='vendorpage'),
     path('bookigVendor/',views.vendorBookingSection,name='vendorBooking'),
-    path('vendorPackageView/<int:id>',views.vendorPackageView,name='vendorPackageView'),
+    path('vendorPackageView/<int:id>/',views.vendorPackageView,name='vendorPackageView'),
+    path('vendorBookingDetails/<int:id>/',views.vendorBookingUserDetails,name='vendorBookingUserDetails'),
     # Admin Section
     path('adminpanel/',views.adminPenel,name='adminpanel'),
     path('verification/<int:id>/',views.verification,name='verification'),

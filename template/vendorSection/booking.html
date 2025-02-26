@@ -29,15 +29,15 @@
             <div class="col-md-4" style="display: flex;justify-content: center;"><h4>Actions</h4></div>            
         </div>
         <hr>
-        
+        {% for i in user %}
         <div class="row mt-5">
-            <div class="col-md-4" style="display: flex;justify-content: center;"><h6></h6></div>
-            <div class="col-md-4" style="display: flex;justify-content: center;"><h6></h6></div>
+            <div class="col-md-4" style="display: flex;justify-content: center;"><h6>{{i.destination}}</h6></div>
+            <div class="col-md-4" style="display: flex;justify-content: center;"><h6>{{i.name}}</h6></div>
             <div class="col-md-4" style="display: flex;justify-content: space-around;">
-                <a href="" class="btn btn-warning">View</a>
+                <a href="{% url 'vendorBookingUserDetails' i.id %}" class="btn btn-warning">View</a>
             </div>            
         </div>
-        
+        {% endfor %}
     </div>
     
 </body>

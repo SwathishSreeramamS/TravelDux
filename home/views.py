@@ -260,8 +260,22 @@ def vendorPackageView(request,id):
     return render(request,'vendorSection/view.html',context)
 
 def vendorBookingSection(request):
-    return render(request,'vendorSection/booking.html')
+    if "vendorname" in request.session:
+        username = request.session['vendorname']
+        name = User.objects.filter(username = username).first()
+        vname = name.first_name
+        user = bookingDetails.objects.filter(packager_name = vname)
+        context = {
+            'user':user,
+        }
+    return render(request,'vendorSection/booking.html',context)
 
+def vendorBookingUserDetails(request,id):
+    user = bookingDetails.objects.filter(id = id)
+    context = {
+        'user':user,
+    }
+    return render(request,'vendorSection/view.html',context)
 # Admin Section
 
 def adminPenel(request):

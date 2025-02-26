@@ -9,36 +9,21 @@
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
     <style>
-        .images{
-            width: 100%;
-            height: 200px;
-            margin-top: 30px;
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 100px auto;
+            color: black;
+            font-size: 25px;
+            font-weight: 600;
         }
-        label{
-            font-size: 20px;
-            margin-top: 15px
+          
+        td{
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
         }
-        .details{
-            font-size: 15px;
-            margin-top: 20px;
-        }
-        .description{
-            width: 100%;
-            height: 200px;
-            overflow: scroll;
-        }
-        input{
-            width: 400px;
-            height: 40px;
-            border-radius: 10px;
-            border: 2px solid gray;
-        }
-        textarea{
-            width: 400px;
-            height: 250px;
-            border-radius: 10px;
-            border: 2px solid gray;
-        }
+          
     </style>
 </head>
 <body>
@@ -51,43 +36,60 @@
             </div>
             <div class="col-md-6">
                 <div class="logout p-5" style="display:flex;justify-content:end;">
-                    <a href="{% url 'adminpanel' %}" class="btn btn-danger">Back</a>
+                    <a href="{% url 'vendorBooking' %}" class="btn btn-danger">Back</a>
                 </div>
             </div>
         </div>
     </div>
-    <div class="container col-md-12 d-flex">
-        {% for i in item %}
-        <div class="col-md-9">
-            <h1 style="margin-left: 50px;margin-left: 243px;margin-top: 100px;"><u>Images</u></h1>
-            <div class="row d-flex">
-                <div class="col-md-4"><img src="{{i.image1.url}}" alt="image 1" class="images" style="border-top: 10px solid  rgb(114, 216, 114);border-left: 10px solid  rgb(114, 216, 114);"></div>
-                <div class="col-md-4"><img src="{{i.image2.url}}" alt="image 2" class="images" style="border-top: 10px solid  rgb(114, 216, 114);border-right: 10px solid  rgb(114, 216, 114);"></div>
-            </div>
-            <div class="row d-flex">
-                <div class="col-md-4"><img src="{{i.image3.url}}" alt="image 3" class="images" style="border-bottom: 10px solid  rgb(114, 216, 114);border-left: 10px solid  rgb(114, 216, 114);"></div>
-                <div class="col-md-4"><img src="{{i.image4.url}}" alt="image 4" class="images" style="border-bottom: 10px solid  rgb(114, 216, 114);border-right: 10px solid  rgb(114, 216, 114);"></div>
-            </div>
-        </div>
-        <form action="" method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            <label for="destination">Destination</label><br>
-            <input type="text" name="destination" id="destination" value="{{i.destination}}" required><br>
-            <label for="description">Description</label><br>
-            <textarea type="text" name="description" id="description" required>{{i.description}}</textarea><br>
-            <label for="duration">Duration</label><br>
-            <input type="text" name="duration" id="duration" value="{{i.duration}}" required><br>
-            <label for="price">Price</label><br>
-            <input type="number" name="price" id="price" value="{{i.price}}" required> <br>
-            <label for="packager_name">Duration</label><br>
-            <input type="text" name="packager_name" id="packager_name" value="{{i.packager_name}}" required><br>
-            <input type="file" name="image1" accept="image/*" onchange="previewImage(event)" style="margin-top: 10px;">
-            <input type="file" name="image2" accept="image/*" onchange="previewImage(event)" style="margin-top: 10px;">
-            <input type="file" name="image3" accept="image/*" onchange="previewImage(event)" style="margin-top: 10px;">
-            <input type="file" name="image4" accept="image/*" onchange="previewImage(event)" style="margin-top: 10px;"><br>
-            <button type="submit" class="submit_button btn btn-success mt-3">Submit</button>
-        </form>
-        {% endfor %}
+    <div class="container">
+        <table>
+            <tr>
+                <td>Name</td>
+                {% for i in user %}
+                <td>{{i.name}}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>Email</td>
+                {% for i in user %}
+                <td>{{i.email}}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>Phone Number</td>
+                {% for i in user %}
+                <td>{{i.phone}}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>Alternative Phone Number</td>
+                {% for i in user %}
+                <td>{{i.altPhone}}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>Number of Travellers</td>
+                {% for i in user %}
+                <td>{{i.numTraveller}}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>Destination</td>
+                {% for i in user %}
+                <td>{{i.destination}}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>Packager Name</td>
+                {% for i in user %}
+                <td>{{i.packager_name}}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>Amount Paid</td>
+                <td>Paid(RazorPay)</td>
+            </tr>
+        </table>
     </div>
 </body>
 </html>
