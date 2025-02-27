@@ -185,7 +185,7 @@ def checkoutPage(request):
             total = item.price * user.numTraveller
             context = {
                 'user': items,
-                'total': total,
+                'total' : total,
             }
             return render(request, 'userInterface/checkout.html', context)
 
