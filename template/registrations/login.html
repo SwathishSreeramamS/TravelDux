@@ -28,5 +28,8 @@ TravelDux | LoginPage
         </form>
     </div>
     <div class="row"><p>Don't have an account? <a href="{% url 'signup' %}">SignUp!</a></p></div>
+    {% if error %}
+        <p class="error-message" style="color: red;">{{ error }}</p>
+    {% endif %}
 </div>
 {% endblock %}

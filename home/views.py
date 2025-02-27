@@ -31,7 +31,7 @@ def loginPage(request):
             else:
                 return redirect(homePage)
         else:
-            return redirect(loginPage)
+            return render(request, 'registrations/login.html',{"error":"user does not exist" })
 
     return render(request, 'registrations/login.html')
 
@@ -174,18 +174,20 @@ def searchHere(request):
 
 def checkoutPage(request):
     id = request.session.get('ids')
-    item = packages.objects.filter(id = id).first()
-    name = request.session.get('passengerName')
-    user = bookingDetails.objects.filter(name = name)
-    use = bookingDetails.objects.filter(name = name).first()
-    total = item.price*use.numTraveller
-    context = {
-        'user' : user,
-        'total' : total,
-    }    
-    return render(request,'userInterface/checkout.html',context)
-
-
+    item = packages.objects.filter(id=id).first()  # Fetch the package
+    if item:
+        place = item.destination
+        name = request.session.get('passengerName')
+        user = bookingDetails.objects.filter(name=name).first()  # Fetch user booking details
+        if user:
+            # Filter bookings with the same destination
+            items = bookingDetails.objects.filter(destination=place, name=name)
+            total = item.price * user.numTraveller
+            context = {
+                'user': items,
+                'total': total,
+            }
+            return render(request, 'userInterface/checkout.html', context)
 
 # Vendor Section
 
@@ -231,7 +233,7 @@ def vendorIndexPage(request):
 def vendorPackageView(request,id):
     item = packages.objects.filter(id=id)
     context = {
-        'item':item
+        'item':item,
     }
     if request.method == 'POST':
         destination = request.POST.get('destination')
@@ -275,7 +277,7 @@ def vendorBookingUserDetails(request,id):
     context = {
         'user':user,
     }
-    return render(request,'vendorSection/view.html',context)
+    return render(request,'vendorSection/viewUser.html',context)
 # Admin Section
 
 def adminPenel(request):
