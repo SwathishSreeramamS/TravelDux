@@ -42,8 +42,9 @@
             </div>
         </div>
     </div>
+    {% for i in item %}
     <div class="container col-md-12 d-flex">
-        {% for i in item %}
+        
         <div class="col-md-9">
             <h1 style="margin-left: 50px;margin-left: 243px;margin-top: 100px;"><u>Images</u></h1>
             <div class="row d-flex">
@@ -61,8 +62,12 @@
             <div class="details d-flex"><p class="label">Duration :&nbsp;&nbsp; <p class="details"> {{i.duration}} Days</p></p></div>
             <div class="details d-flex"><p class="label">Packager Name :&nbsp;&nbsp; <p class="details"> {{i.packager_name}}</p></p></div>
             <div class="details d-flex"><p class="label">Price :&nbsp;&nbsp; <p class="details"> {{i.price}} rs</p></p></div>
-        </div>
-        {% endfor %}
+        </div> 
     </div>
+    <div class="d-flex justify-content-end" style="margin-top: 35px;margin-right: 35px;">
+        <a href="{% url 'editvendorsection' i.id %}" class="btn btn-primary me-3">Edit</a>
+        <a href="{% url 'vendordeletesection' i.id %}" class="btn btn-danger me-3">Delete</a>
+    </div>
+    {% endfor %}
 </body>
 </html>

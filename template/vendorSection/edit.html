@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelDux | adminPanel</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <style>
+        label{
+            font-size: 20px;
+            font-weight: 700;
+            margin-top: 15px
+        }
+        form{
+            margin-top: 50px;
+            margin-left: 100px;
+        }
+        input{
+            width: 360px;
+            height: 40px;
+        }
+        button:hover{
+            background-color: rgb(70, 236, 70);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="nav col-md-12" style="background-color: rgb(114, 216, 114);">
+            <div class="col-md-6">
+                <div class="title p-5">
+                    <h1>TravelDux</h1>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="logout p-5" style="display:flex;justify-content:end;">
+                    <a href="{% url 'vendorpage' %}" class="btn btn-danger">Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container col-md-12 d-flex">
+        {% for i in item %}
+        <form action="" method="POST" enctype="multipart/form-data" class="d-flex">
+            {% csrf_token %}
+            <table cellpadding="20">
+                <tr>
+                    <td><label for="">Destination</label></td>
+                    <td> <input type="text" name="destination" placeholder="Destination" required value="{{i.destination}}"></td>
+                </tr>
+                <tr>
+                    <td><label for="">Description</label></td>
+                    <td><textarea name="description" placeholder="Description" rows="4"required style="width: 360px;">{{i.description}}</textarea></td>
+                </tr>
+                <tr>
+                    <td><label for="">Duration</label></td>
+                    <td><input type="text" name="duration" placeholder="Duration" value="{{i.duration}}" required></td>
+                </tr>
+                <tr>
+                    <td><label for="">Price</label></td>
+                    <td><input type="number" name="price" placeholder="price" value="{{i.price}}"></td>
+                </tr>
+                <tr>
+                    <td><label for="">Packager Name</label></td>
+                    <td><input type="text" name="packager_name" placeholder="packager_name" required value="{{user.first_name}}"></td>
+                </tr>
+                <table cellpadding="20">
+                    <tr>
+                        <td><label for="">Image 1 </label><p>(Don't forgot to add image)</p></td>
+                        <td><input type="file" name="image1" accept="image/*" onchange="previewImage(event)" value="{{i.image1}}"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="">Image 2 </label><p>(Don't forgot to add image)</p></td>
+                        <td><input type="file" name="image2" accept="image/*" onchange="previewImage(event)"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="">Image 3 </label><p>(Don't forgot to add image)</p></td>
+                        <td><input type="file" name="image3" accept="image/*" onchange="previewImage(event)"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="">Image 4 </label><p>(Don't forgot to add image)</p></td>
+                        <td><input type="file" name="image4" accept="image/*" onchange="previewImage(event)"></td>
+                    </tr>
+                </table>
+            </table>
+            <button type="submit" class="submit_button">Submit</button>  
+        </form>
+        {% endfor %}
+    </div>
+</body>
+</html>

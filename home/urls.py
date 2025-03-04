@@ -30,6 +30,8 @@ urlpatterns = [
     path('bookigVendor/',views.vendorBookingSection,name='vendorBooking'),
     path('vendorPackageView/<int:id>/',views.vendorPackageView,name='vendorPackageView'),
     path('vendorBookingDetails/<int:id>/',views.vendorBookingUserDetails,name='vendorBookingUserDetails'),
+    path('vendoreditSection/<int:id>/',views.vendoreditSection,name='editvendorsection'),
+    path('vendordeletesection/<int:id>/',views.vendorDeleteSection,name='vendordeletesection'),
     # Admin Section
     path('adminpanel/',views.adminPenel,name='adminpanel'),
     path('verification/<int:id>/',views.verification,name='verification'),

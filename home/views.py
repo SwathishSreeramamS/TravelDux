@@ -276,6 +276,42 @@ def vendorBookingUserDetails(request,id):
         'user':user,
     }
     return render(request,'vendorSection/viewUser.html',context)
+
+def vendoreditSection(request,id):
+    item = packages.objects.filter(id=id)
+    context = {
+        'item':item,
+    }
+    if request.method == 'POST':
+        destination = request.POST.get('destination')
+        description = request.POST.get('description')
+        duration = request.POST.get('duration')
+        price = request.POST.get('price')
+        packager_name = request.POST.get('packager_name')
+        image1 = request.FILES.get('image1',None)
+        image2 = request.FILES.get('image2',None)
+        image3 = request.FILES.get('image3',None)
+        image4 = request.FILES.get('image4',None)
+        edited = packages(
+            id = id,
+            destination = destination,
+            description = description,
+            duration = duration,
+            price = price,
+            packager_name = packager_name,
+            image1 = image1,
+            image2 = image2,
+            image3 = image3,
+            image4 = image4,
+        )
+        edited.save()
+        return redirect(vendorIndexPage)
+    return render(request,'vendorSection/edit.html',context)
+
+def vendorDeleteSection(request,id):
+    item = packages.objects.filter(id=id)
+    item.delete()
+    return redirect(vendorIndexPage)
 # Admin Section
 
 def adminPenel(request):
