@@ -128,8 +128,6 @@ def teamPage(request):
 def testimonialPage(request):
     return render(request,'userInterface/testimonial.html')
 
-def fournotforPage(request):
-    return render(request,'userInterface/404.html')
 
 def UserViewSection(request,id):
     item = packages.objects.filter(id=id)

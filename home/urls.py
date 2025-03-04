@@ -21,7 +21,6 @@ urlpatterns = [
     path('servicePage/',views.servicePage,name='servicePage'),
     path('teamPage/',views.teamPage,name='teamPage'),
     path('testimonialPage/',views.testimonialPage,name='testimonialPage'),
-    path('fournotfourPage/',views.fournotforPage,name='fournotfourPage'),
     path('userviewSection/<int:id>/',views.UserViewSection,name='Userviewsection'),
     path('bookingDetails/',views.UserBookingDetails,name='bookingDetails'),
     path('searchHere/',views.searchHere,name='searchHere'),
