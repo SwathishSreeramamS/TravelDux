@@ -218,9 +218,7 @@ def vendorIndexPage(request):
             return redirect(vendorIndexPage)
         user = User.objects.get(username = username)
         vendor_name = user.first_name
-        packitems = packages.objects.filter(packager_name = vendor_name)
-        verified = 'verified'
-        items = packitems.filter(verification = verified)
+        items = packages.objects.filter(packager_name = vendor_name)
         context = {
             'items':items,
             'user':user,
