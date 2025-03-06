@@ -99,14 +99,10 @@ def homePage(request):
 def aboutPage(request):
     return render(request,'userInterface/about.html')
 
-def bookingPage(request):
-    return render(request,'userInterface/booking.html')
 
 def contactPage(request):
     return render(request,'userInterface/contact.html')
 
-def destinationPage(request):
-    return render(request,'userInterface/destination.html')
 
 def packagePage(request):
     if 'ids' in request.session:
@@ -122,11 +118,6 @@ def packagePage(request):
 def servicePage(request):
     return render(request,'userInterface/service.html')
 
-def teamPage(request):
-    return render(request,'userInterface/team.html')
-
-def testimonialPage(request):
-    return render(request,'userInterface/testimonial.html')
 
 
 def UserViewSection(request,id):

@@ -14,13 +14,9 @@ urlpatterns = [
     # User Section
     path('homePage/',views.homePage,name='homepage'),
     path('aboutPage/',views.aboutPage,name='aboutPage'),
-    path('bookingPage/',views.bookingPage,name='bookingPage'),
     path('contactPage/',views.contactPage,name='contactPage'),
-    path('destinationPage/',views.destinationPage,name='destinationPage'),
     path('packagePage/',views.packagePage,name='packagePage'),
     path('servicePage/',views.servicePage,name='servicePage'),
-    path('teamPage/',views.teamPage,name='teamPage'),
-    path('testimonialPage/',views.testimonialPage,name='testimonialPage'),
     path('userviewSection/<int:id>/',views.UserViewSection,name='Userviewsection'),
     path('bookingDetails/',views.UserBookingDetails,name='bookingDetails'),
     path('searchHere/',views.searchHere,name='searchHere'),
